@@ -30,7 +30,8 @@ export default function TopBar() {
          alignItems="center"
       >
          <Stack>
-            <Sidebar />
+            {" "}
+            <Sidebar />{" "}
          </Stack>
          <Slider />
          <Stack direction="row">

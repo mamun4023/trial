@@ -36,10 +36,11 @@ export default function BasicPopover() {
    return (
       <div>
          <Button
-            direction="row"
-            alignItems="center"
             aria-describedby={id}
             onClick={handleClick}
+            sx={{
+               minWidth: 180,
+            }}
          >
             <Stack direction="row" alignItems="center">
                <Typography>John Doe</Typography>
