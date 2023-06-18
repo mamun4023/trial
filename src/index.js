@@ -35,6 +35,7 @@ const Theme = createTheme({
       },
       background: {
          default: "#D0D4D9",
+         light: "#E8E9EC",
       },
    },
 

@@ -1,150 +1,111 @@
-import { Box, Button, Stack } from "@mui/material";
+import { Box, IconButton, Stack, Button, useTheme } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/swiper.min.css";
 
-const SwiperButtonNext = ({ children }) => {
-   const swiper = useSwiper();
-   return <button onClick={() => swiper.slideNext()}>{children}</button>;
-};
-
-const SwiperButtonPrv = ({ children }) => {
+const AppIconButton = styled(IconButton)(({ theme }) => ({
+   backgroundColor: theme.palette.background.light,
+   borderRadius: 5,
+   margin: 10,
+   padding: 4,
+   color: theme.palette.primary.dark,
+   "&:hover": {
+      border: 2,
+      // border: `1px solid ${theme.palette.primary.main}`,
+      color: theme.palette.primary.main,
+   },
+}));
+const NextButton = () => {
    const swiper = useSwiper();
    return (
-      <button style={{ padding: 10 }} onClick={() => swiper.slidePrev()}>
-         {children}
-      </button>
+      <AppIconButton onClick={() => swiper?.slideNext()}>
+         {" "}
+         <ArrowForwardIosIcon />
+      </AppIconButton>
+   );
+};
+
+const PrevButton = () => {
+   const swiper = useSwiper();
+   return (
+      <AppIconButton onClick={() => swiper?.slidePrev()}>
+         <ArrowBackIosNewIcon />
+      </AppIconButton>
    );
 };
 export default function Slider() {
+   const theme = useTheme();
    return (
-      <Swiper
-         modules={[Navigation]}
-         slidesPerView={5}
-         spaceBetween={150}
-         // navigation
-         onSlideChange={() => console.log("slide change")}
-         onSwiper={(swiper) => console.log(swiper)}
-         // breakpoints={{
-         //    // when window width is >= 640px
-
-         //    768: {
-         //       width: 100,
-         //       slidesPerView: 1,
-         //       spaceBetween: 10,
-         //       centeredSlides: true,
-         //    },
-         //    // when window width is >= 768px
-
-         //    1440: {
-         //       width: 500,
-         //       slidesPerView: 5,
-         //    },
-         // }}
-         style={{
-            margin: 10,
-            width: "800px",
-         }}
-      >
-         <Stack>
-            <SwiperButtonPrv>prev</SwiperButtonPrv>
-
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 1
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 2
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 3
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 4
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 5
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 6
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 7
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 8
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 9
-               </Button>
-            </SwiperSlide>
-            <SwiperSlide>
-               <Button
-                  sx={{ width: 146, height: 50 }}
-                  variant="contained"
-                  color="primary"
-               >
-                  Workspace - 10
-               </Button>
-            </SwiperSlide>
-
-            <SwiperButtonNext>Next</SwiperButtonNext>
-         </Stack>
-      </Swiper>
+      <div style={{ display: "flex" }}>
+         <PrevButton />
+         <Swiper
+            modules={[Navigation]}
+            slidesPerView={7}
+            spaceBetween={5}
+            // navigation
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+            breakpoints={{}}
+            style={{
+               margin: 2,
+               maxWidth: 1050,
+            }}
+         >
+            {Data.map((d) => (
+               <SwiperSlide key={d.id}>
+                  <Button
+                     sx={{
+                        width: 146,
+                        height: 50,
+                        fontSize: 16,
+                        "&:focus": {
+                           border: `2px solid ${theme.palette.info.main}`,
+                        },
+                     }}
+                     variant="contained"
+                     color="primary"
+                  >
+                     {d.title}
+                  </Button>
+               </SwiperSlide>
+            ))}
+         </Swiper>
+         <NextButton />
+      </div>
    );
 }
+
+const Data = [
+   {
+      id: 1,
+      title: "Workspace 1",
+   },
+   {
+      id: 2,
+      title: "Workspace 2",
+   },
+   {
+      id: 3,
+      title: "Workspace 3",
+   },
+   {
+      id: 4,
+      title: "Workspace 4",
+   },
+   {
+      id: 5,
+      title: "Workspace 5",
+   },
+   {
+      id: 6,
+      title: "Workspace 6",
+   },
+   {
+      id: 7,
+      title: "Workspace 7",
+   },
+];

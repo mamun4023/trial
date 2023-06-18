@@ -30,7 +30,7 @@ const ToggleButton = styled(IconButton)(({ theme }) => ({
    color: theme.palette.common.white,
    "&:hover": {
       border: 2,
-      border: `1px solid ${theme.palette.primary.main}`,
+      // border: `1px solid ${theme.palette.primary.main}`,
       color: theme.palette.primary.main,
    },
 }));
@@ -116,7 +116,7 @@ function ControlledAccordions({ open, setOpen }) {
          <AppAccordion
             expanded={expanded === "panel1"}
             onChange={handleChange("panel1")}
-            // style={{ margin: 0 }}
+            style={{ margin: 0 }}
          >
             <AccordionSummary
                expandIcon={
@@ -149,6 +149,7 @@ function ControlledAccordions({ open, setOpen }) {
          <AppAccordion
             expanded={expanded === "panel2"}
             onChange={handleChange("panel2")}
+            style={{ margin: 0 }}
          >
             <AccordionSummary
                expandIcon={
@@ -181,7 +182,7 @@ function ControlledAccordions({ open, setOpen }) {
          <AppAccordion
             expanded={expanded === "panel3"}
             onChange={handleChange("panel3")}
-            // style={{ margin: 0 }}
+            style={{ margin: 0 }}
          >
             <AccordionSummary
                expandIcon={
@@ -216,6 +217,7 @@ function ControlledAccordions({ open, setOpen }) {
          <AppAccordion
             expanded={expanded === "panel4"}
             onChange={handleChange("panel4")}
+            style={{ margin: 0 }}
          >
             <AccordionSummary
                expandIcon={

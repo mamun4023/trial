@@ -6,6 +6,7 @@ import {
    Box,
    IconButton,
    Button,
+   Divider,
 } from "@mui/material";
 
 import Notifications from "@mui/icons-material/Notifications";
@@ -17,6 +18,7 @@ import { useState } from "react";
 import ProfiePopover from "./profile";
 import Slider from "./slider";
 import Sidebar from "./sidebar";
+import { Sms } from "@mui/icons-material";
 
 export default function TopBar() {
    const Theme = useTheme();
@@ -30,9 +32,9 @@ export default function TopBar() {
          alignItems="center"
       >
          <Stack>
-            {" "}
-            <Sidebar />{" "}
+            <Sidebar />
          </Stack>
+         <Divider orientation="vertical" sx={{ height: 50 }} />
          <Slider />
          <Stack direction="row">
             <Stack direction="row" spacing={1} alignItems="center">
@@ -47,6 +49,13 @@ export default function TopBar() {
                   <Wifi
                      sx={{
                         color: "success.main",
+                     }}
+                  />
+               </IconButton>
+               <IconButton>
+                  <Sms
+                     sx={{
+                        color: "primary.main",
                      }}
                   />
                </IconButton>
