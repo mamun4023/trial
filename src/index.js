@@ -1,17 +1,67 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import "./index.css";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const Theme = createTheme({
+   typography: {
+      fontFamily: "Inter",
+      button: {
+         textTransform: "none",
+      },
+   },
+
+   palette: {
+      primary: {
+         main: "#53575A",
+         light: "#F1F1F9",
+         dark: "#2D2C3F",
+         contrastText: "#4D4D4D",
+      },
+      secondary: {
+         main: "#D0D4D9",
+
+         contrastText: "#838296",
+      },
+      success: {
+         main: "#61BD63",
+      },
+      info: {
+         main: "#FFBF3C",
+      },
+      other: {
+         white: "#FFFFFF",
+      },
+      background: {
+         default: "#D0D4D9",
+      },
+   },
+
+   components: {
+      MuiButton: {
+         styleOverrides: {
+            root: ({ ownerState, theme }) => ({
+               ...(ownerState.variant === "contained" &&
+                  ownerState.color === "primary" && {
+                     backgroundColor: theme.palette.primary,
+                     color: theme.palette.other.white,
+                     fontWeight: 400,
+                     fontSize: "16px",
+                     lineHeight: "19px",
+                     fontStyle: "normal",
+                     fontFamily: "Inter",
+                  }),
+            }),
+         },
+      },
+   },
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+   <ThemeProvider theme={Theme}>
+      <CssBaseline />
+      <App />
+   </ThemeProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
