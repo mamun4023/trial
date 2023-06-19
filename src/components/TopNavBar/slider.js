@@ -1,3 +1,4 @@
+import React from "react";
 import { useRef } from "react";
 import { FreeMode, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -77,7 +78,7 @@ export default function Slider() {
 
    return (
       <SliderContainer>
-         <NavigationButton onClick={() => swiperRef.current?.slidePrev()}>
+         <NavigationButton onClick={() => swiperRef.current.slidePrev()}>
             <ArrowBackIosNewIcon />
          </NavigationButton>
          <Swiper
@@ -101,7 +102,7 @@ export default function Slider() {
                </SwiperSlide>
             ))}
          </Swiper>
-         <NavigationButton onClick={() => swiperRef.current?.slideNext()}>
+         <NavigationButton onClick={() => swiperRef.current.slideNext()}>
             <ArrowForwardIosIcon />
          </NavigationButton>
       </SliderContainer>

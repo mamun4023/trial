@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
    Drawer,
    IconButton,
@@ -8,7 +8,6 @@ import {
    AccordionDetails,
    useTheme,
    Stack,
-   Box,
 } from "@mui/material";
 
 import {
@@ -57,7 +56,7 @@ export default function Sidebar() {
    );
 }
 
-const SideMenuContainer = styled()(({ theme }) => ({
+const SideMenuContainer = styled("div")(({ theme }) => ({
    maxWidth: 300,
    background: theme.palette.primary.main,
 }));

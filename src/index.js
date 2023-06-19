@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./index.css";
 import App from "./App";
 

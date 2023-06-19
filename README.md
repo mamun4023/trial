@@ -6,7 +6,7 @@ In the project directory, you can run:
 
 ### Deployed Link
 
-URL : https://648f451d781df850b725f0ab--inquisitive-dragon-91577e.netlify.app/
+URL : https://64907bf244734c7e884f158e--monumental-palmier-0ee97f.netlify.app/
 
 ## Workstation break points
 

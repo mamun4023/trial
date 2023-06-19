@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 // MUI component
 import { useTheme, Stack, Box, IconButton, Divider } from "@mui/material";
@@ -73,6 +73,7 @@ export default function TopBar() {
             <Sidebar />
          </Stack>
          <AppDivider orientation="vertical" />
+
          <Slider />
          <Stack direction="row">
             <Stack direction="row" spacing={1} alignItems="center">
