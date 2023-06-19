@@ -1,13 +1,16 @@
-import { Box, IconButton, Stack, Button, useTheme } from "@mui/material";
+import { useRef } from "react";
+import { FreeMode, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+//MUI components
+import { IconButton, Button, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Navigation } from "swiper";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-// Import Swiper styles
+
+import { ArrowForwardIos, ArrowBackIosNew } from "@mui/icons-material";
+// Swiper styles
 import "swiper/swiper.min.css";
 
-const AppIconButton = styled(IconButton)(({ theme }) => ({
+const NavigationButton = styled(IconButton)(({ theme }) => ({
    backgroundColor: theme.palette.background.light,
    borderRadius: 5,
    margin: 10,
@@ -15,67 +18,93 @@ const AppIconButton = styled(IconButton)(({ theme }) => ({
    color: theme.palette.primary.dark,
    "&:hover": {
       border: 2,
-      // border: `1px solid ${theme.palette.primary.main}`,
       color: theme.palette.primary.main,
    },
 }));
-const NextButton = () => {
-   const swiper = useSwiper();
-   return (
-      <AppIconButton onClick={() => swiper?.slideNext()}>
-         {" "}
-         <ArrowForwardIosIcon />
-      </AppIconButton>
-   );
-};
 
-const PrevButton = () => {
-   const swiper = useSwiper();
-   return (
-      <AppIconButton onClick={() => swiper?.slidePrev()}>
-         <ArrowBackIosNewIcon />
-      </AppIconButton>
-   );
-};
+const WorkStation = styled(Button)(({ theme }) => ({
+   width: 146,
+   height: 50,
+   fontSize: 16,
+   color: theme.palette.common.white,
+   backgroundColor: theme.palette.primary.main,
+   "&:hover": {
+      color: theme.palette.primary.main,
+   },
+   "&:focus": {
+      border: `2px solid ${theme.palette.info.main}`,
+   },
+}));
+
+const ArrowForwardIosIcon = styled(ArrowForwardIos)(({ theme }) => ({
+   color: theme.palette.secondary.dark,
+}));
+
+const ArrowBackIosNewIcon = styled(ArrowBackIosNew)(({ theme }) => ({
+   color: theme.palette.secondary.dark,
+}));
+
+const SliderContainer = styled("div")(({ theme }) => ({
+   width: "60%",
+   display: "flex",
+   [theme.breakpoints.down("desktop")]: {
+      display: "none",
+   },
+}));
+
 export default function Slider() {
-   const theme = useTheme();
+   const swiperRef = useRef();
+
+   const BreakPoints = {
+      768: {
+         slidesPerView: 1,
+         spaceBetween: 8,
+         centeredSlides: true,
+      },
+      1440: {
+         slidesPerView: 5,
+         spaceBetween: 8,
+      },
+      1600: {
+         slidesPerView: 7,
+         spaceBetween: 10,
+      },
+      2000: {
+         slidesPerView: 8,
+         spaceBetween: 10,
+      },
+   };
+
    return (
-      <div style={{ display: "flex" }}>
-         <PrevButton />
+      <SliderContainer>
+         <NavigationButton onClick={() => swiperRef.current?.slidePrev()}>
+            <ArrowBackIosNewIcon />
+         </NavigationButton>
          <Swiper
-            modules={[Navigation]}
-            slidesPerView={7}
-            spaceBetween={5}
-            // navigation
+            modules={[Navigation, FreeMode]}
+            slidesPerView={1}
+            spaceBetween={1}
+            grabCursor={true}
+            centeredSlidesBounds={true}
+            navigation
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
-            breakpoints={{}}
-            style={{
-               margin: 2,
-               maxWidth: 1050,
+            onBeforeInit={(swiper) => {
+               swiperRef.current = swiper;
             }}
+            breakpoints={BreakPoints}
+            className="mySwiper"
          >
             {Data.map((d) => (
                <SwiperSlide key={d.id}>
-                  <Button
-                     sx={{
-                        width: 146,
-                        height: 50,
-                        fontSize: 16,
-                        "&:focus": {
-                           border: `2px solid ${theme.palette.info.main}`,
-                        },
-                     }}
-                     variant="contained"
-                     color="primary"
-                  >
-                     {d.title}
-                  </Button>
+                  <WorkStation>{d.title}</WorkStation>
                </SwiperSlide>
             ))}
          </Swiper>
-         <NextButton />
-      </div>
+         <NavigationButton onClick={() => swiperRef.current?.slideNext()}>
+            <ArrowForwardIosIcon />
+         </NavigationButton>
+      </SliderContainer>
    );
 }
 
@@ -107,5 +136,13 @@ const Data = [
    {
       id: 7,
       title: "Workspace 7",
+   },
+   {
+      id: 8,
+      title: "Workspace 8",
+   },
+   {
+      id: 9,
+      title: "Workspace 9",
    },
 ];

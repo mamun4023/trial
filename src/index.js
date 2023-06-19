@@ -21,7 +21,7 @@ const Theme = createTheme({
       },
       secondary: {
          main: "#D0D4D9",
-
+         dark: "#808495",
          contrastText: "#838296",
       },
       success: {
@@ -30,12 +30,17 @@ const Theme = createTheme({
       info: {
          main: "#FFBF3C",
       },
-      other: {
-         white: "#FFFFFF",
-      },
       background: {
          default: "#D0D4D9",
          light: "#E8E9EC",
+      },
+   },
+   breakpoints: {
+      values: {
+         tablet: 768,
+         laptop: 1440,
+         desktop: 1620,
+         largeScreen: 2560,
       },
    },
 

@@ -1,89 +1,96 @@
-import {
-   useTheme,
-   Avatar,
-   Stack,
-   Typography,
-   Box,
-   IconButton,
-   Button,
-   Divider,
-} from "@mui/material";
-
-import Notifications from "@mui/icons-material/Notifications";
-import Wifi from "@mui/icons-material/Wifi";
-import BorderColorSharpIcon from "@mui/icons-material/BorderColorSharp";
-
 import { useState } from "react";
 
+// MUI component
+import { useTheme, Stack, Box, IconButton, Divider } from "@mui/material";
+import { styled } from "@mui/material/styles";
+
+// Icon
+import {
+   Wifi,
+   BorderColorSharp,
+   Notifications,
+   Sms,
+} from "@mui/icons-material";
+
+// Components
 import ProfiePopover from "./profile";
 import Slider from "./slider";
 import Sidebar from "./sidebar";
-import { Sms } from "@mui/icons-material";
+
+// Styled Components
+const TopBarContainer = styled(Stack)(({ theme }) => ({
+   height: 78,
+   width: "100%",
+   backgroundColor: theme.palette.common.white,
+   flexDirection: "row",
+   justifyContent: "space-between",
+   alignItems: "center",
+}));
+
+const AppDivider = styled(Divider)(({ theme }) => ({
+   height: 50,
+   marginLeft: 100,
+   marginRight: 100,
+}));
+
+const AlartCircle = styled(Box)(({ theme }) => ({
+   position: "absolute",
+   height: 10,
+   width: 10,
+   backgroundColor: theme.palette.info.main,
+   borderRadius: 50,
+   left: 40,
+   left: 20,
+   top: 10,
+}));
+
+const WifiIcon = styled(Wifi)(({ theme }) => ({
+   color: theme.palette.success.main,
+}));
+
+const BorderColorSharpIcon = styled(BorderColorSharp)(({ theme }) => ({
+   color: theme.palette.primary.main,
+}));
+
+const NotificationsIcon = styled(Notifications)(({ theme }) => ({
+   color: theme.palette.primary.main,
+}));
+
+const SmsIcon = styled(Sms)(({ theme }) => ({
+   color: theme.palette.primary.main,
+}));
 
 export default function TopBar() {
-   const Theme = useTheme();
+   const { palette } = useTheme();
    const [openProfile, setOpenProfile] = useState(false);
 
    return (
-      <Stack
-         sx={{ height: 78, bgcolor: Theme.palette.common.white }}
-         direction="row"
-         justifyContent="space-between"
-         alignItems="center"
-      >
+      <TopBarContainer>
          <Stack>
             <Sidebar />
          </Stack>
-         <Divider orientation="vertical" sx={{ height: 50 }} />
+         {/* <AppDivider orientation="vertical" /> */}
          <Slider />
          <Stack direction="row">
             <Stack direction="row" spacing={1} alignItems="center">
                <IconButton>
-                  <BorderColorSharpIcon
-                     sx={{
-                        color: "primary.main",
-                     }}
-                  />
+                  <BorderColorSharpIcon color={palette.success.main} />
                </IconButton>
                <IconButton>
-                  <Wifi
-                     sx={{
-                        color: "success.main",
-                     }}
-                  />
+                  <WifiIcon color="red" />
                </IconButton>
                <IconButton>
-                  <Sms
-                     sx={{
-                        color: "primary.main",
-                     }}
-                  />
+                  <SmsIcon color="red" />
                </IconButton>
                <Box sx={{ position: "relative" }}>
                   <IconButton>
-                     <Notifications
-                        sx={{
-                           color: "primary.main",
-                        }}
-                     />
+                     <NotificationsIcon color="primary.main" />
                   </IconButton>
-                  <Box
-                     sx={{
-                        position: "absolute",
-                        height: 10,
-                        width: 10,
-                        bgcolor: Theme.palette.info.main,
-                        borderRadius: "50px",
-                        left: "40px",
-                        left: 20,
-                        top: 10,
-                     }}
-                  ></Box>
+                  <AlartCircle />
                </Box>
             </Stack>
-
             <ProfiePopover open={openProfile} setOpen={setOpenProfile} />
          </Stack>
-      </Stack>
+      </TopBarContainer>
    );
 }
