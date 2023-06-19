@@ -31,6 +31,9 @@ const AppDivider = styled(Divider)(({ theme }) => ({
    height: 50,
    marginLeft: 100,
    marginRight: 100,
+   [theme.breakpoints.down("desktop")]: {
+      display: "none",
+   },
 }));
 
 const AlartCircle = styled(Box)(({ theme }) => ({
@@ -69,7 +72,7 @@ export default function TopBar() {
          <Stack>
             <Sidebar />
          </Stack>
-         {/* <AppDivider orientation="vertical" /> */}
+         <AppDivider orientation="vertical" />
          <Slider />
          <Stack direction="row">
             <Stack direction="row" spacing={1} alignItems="center">

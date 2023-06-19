@@ -30,7 +30,6 @@ const ToggleButton = styled(IconButton)(({ theme }) => ({
    color: theme.palette.common.white,
    "&:hover": {
       border: 2,
-      // border: `1px solid ${theme.palette.primary.main}`,
       color: theme.palette.primary.main,
    },
 }));
@@ -58,6 +57,11 @@ export default function Sidebar() {
    );
 }
 
+const SideMenuContainer = styled()(({ theme }) => ({
+   maxWidth: 300,
+   background: theme.palette.primary.main,
+}));
+
 const AppAccordion = styled(Accordion)(({ theme }) => ({
    background: theme.palette.primary.main,
    boxShadow: "none",
@@ -82,7 +86,7 @@ function ControlledAccordions({ open, setOpen }) {
    };
 
    return (
-      <Box sx={{ maxWidth: 300, background: theme.palette.primary.main }}>
+      <SideMenuContainer>
          <Stack
             direction="row"
             justifyContent="space-between"
@@ -247,6 +251,6 @@ function ControlledAccordions({ open, setOpen }) {
                <Typography>Sub Menu placeholder</Typography>
             </AccordionDetails>
          </AppAccordion>
-      </Box>
+      </SideMenuContainer>
    );
 }

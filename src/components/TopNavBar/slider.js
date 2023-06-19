@@ -47,7 +47,7 @@ const ArrowBackIosNewIcon = styled(ArrowBackIosNew)(({ theme }) => ({
 const SliderContainer = styled("div")(({ theme }) => ({
    width: "60%",
    display: "flex",
-   [theme.breakpoints.down("desktop")]: {
+   [theme.breakpoints.down("laptop")]: {
       display: "none",
    },
 }));
@@ -62,14 +62,14 @@ export default function Slider() {
          centeredSlides: true,
       },
       1440: {
-         slidesPerView: 5,
+         slidesPerView: 4,
          spaceBetween: 8,
       },
-      1600: {
-         slidesPerView: 7,
-         spaceBetween: 10,
+      1620: {
+         slidesPerView: 6,
+         spaceBetween: 20,
       },
-      2000: {
+      2560: {
          slidesPerView: 8,
          spaceBetween: 10,
       },
