@@ -3,55 +3,15 @@ import { useRef } from "react";
 import { FreeMode, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-//MUI components
-import { IconButton, Button, useTheme } from "@mui/material";
-import { styled } from "@mui/material/styles";
+import {
+   SliderContainer,
+   NavigationButton,
+   WorkStation,
+   ArrowBackIosNewIcon,
+   ArrowForwardIosIcon,
+} from "./style";
 
-import { ArrowForwardIos, ArrowBackIosNew } from "@mui/icons-material";
-// Swiper styles
 import "swiper/swiper.min.css";
-
-const NavigationButton = styled(IconButton)(({ theme }) => ({
-   backgroundColor: theme.palette.background.light,
-   borderRadius: 5,
-   margin: 10,
-   padding: 4,
-   color: theme.palette.primary.dark,
-   "&:hover": {
-      border: 2,
-      color: theme.palette.primary.main,
-   },
-}));
-
-const WorkStation = styled(Button)(({ theme }) => ({
-   width: 146,
-   height: 50,
-   fontSize: 16,
-   color: theme.palette.common.white,
-   backgroundColor: theme.palette.primary.main,
-   "&:hover": {
-      color: theme.palette.primary.main,
-   },
-   "&:focus": {
-      border: `2px solid ${theme.palette.info.main}`,
-   },
-}));
-
-const ArrowForwardIosIcon = styled(ArrowForwardIos)(({ theme }) => ({
-   color: theme.palette.secondary.dark,
-}));
-
-const ArrowBackIosNewIcon = styled(ArrowBackIosNew)(({ theme }) => ({
-   color: theme.palette.secondary.dark,
-}));
-
-const SliderContainer = styled("div")(({ theme }) => ({
-   width: "60%",
-   display: "flex",
-   [theme.breakpoints.down("laptop")]: {
-      display: "none",
-   },
-}));
 
 export default function Slider() {
    const swiperRef = useRef();
@@ -88,8 +48,8 @@ export default function Slider() {
             grabCursor={true}
             centeredSlidesBounds={true}
             navigation
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            // onSlideChange={() => console.log("slide change")}
+            // onSwiper={(swiper) => console.log(swiper)}
             onBeforeInit={(swiper) => {
                swiperRef.current = swiper;
             }}
