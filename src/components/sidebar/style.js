@@ -40,8 +40,7 @@ export const AppAccordion = styled(Accordion)(({ theme }) => ({
    },
    background: theme.palette.primary.main,
    boxShadow: "none",
-   paddingTop: 10,
-   margin: 0,
+   padding: "10px 0px",
    "&:before": {
       backgroundColor: "transparent",
    },
@@ -49,8 +48,15 @@ export const AppAccordion = styled(Accordion)(({ theme }) => ({
 
 export const AppAccordionSummary = styled(AccordionSummary)(
    ({ theme, isExpanded }) => ({
+      paddingLeft: 10,
       background: isExpanded ? theme.palette.primary.dark : null,
-      borderLeft: isExpanded ? "5px solid gray" : null,
+      borderLeft: `5px solid ${
+         isExpanded ? theme.palette.secondary.main : theme.palette.primary.main
+      }`,
+      "&:hover": {
+         backgroundColor: theme.palette.primary.dark,
+         borderLeft: `5px solid ${theme.palette.secondary.main}`,
+      },
    })
 );
 

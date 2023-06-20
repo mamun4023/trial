@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 URL : https://64907bf244734c7e884f158e--monumental-palmier-0ee97f.netlify.app/
 
-## Workstation break points
+## Responsive Break points
 
     => 768px   (Tablet)
     => 1440px  (Laptop)

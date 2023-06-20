@@ -1,11 +1,12 @@
 import React from "react";
 import TopBar from "../components/topNavBar";
 import { Stack } from "@mui/material";
+import Layout from "../layout";
 
 export default function Home() {
    return (
-      <Stack>
-         <TopBar />
-      </Stack>
+      <Layout title="Home">
+         <Stack>Home page</Stack>
+      </Layout>
    );
 }
